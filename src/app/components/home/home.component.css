@@ -1,0 +1,17 @@
+  .welcome-container {
+    /* Center the container and add proper spacing/structure */
+    max-width: 800px;
+    margin: 0 auto; 
+
+    /* gives spacing to the top of the header  */
+    padding-top: 80px;
+    padding-bottom: 80px; 
+  }
+  
+  .welcome-appearance {
+    /* Background color and appearance of the welcome container */
+    background-color: rgba(104, 128, 160, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }

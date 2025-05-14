@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(18, 72, 134);
+  color: black;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid black;
+  z-index: 100; /* Ensures footer stays on top */
+  height: 60px; /* Set a fixed height - adjust as needed */
+}

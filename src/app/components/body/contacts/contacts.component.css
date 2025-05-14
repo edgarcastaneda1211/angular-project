@@ -1,0 +1,19 @@
+/* Wrapper contact info */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 56px); /* Adjust based on your navbar height */
+  padding: 2rem 0;
+}
+
+/* Container contact info */
+.contact-container {
+  width: 100%;
+  max-width: 500px; /* Smaller than hero details */
+  margin: 0 auto;
+}
+
+.card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}

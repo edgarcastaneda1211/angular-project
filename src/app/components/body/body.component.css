@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  margin-top: 60px; /* 60px of space to start below the header */
+  margin-bottom: 60px; /* 60px of space to start above the footer */
+  min-height: calc(100vh - 120px); 
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1; 
+}

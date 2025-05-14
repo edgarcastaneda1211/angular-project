@@ -1,0 +1,48 @@
+<div class="hero-details-wrapper">
+  <div class="hero-details-container" *ngIf="hero">
+    <div class="card shadow">
+      <!-- Card header -->
+      <div class="card-header bg-dark text-white">
+        <h3>{{ hero.name }}</h3>
+      </div>
+      
+      <!-- Card content -->
+      <div class="row g-0">
+        <!-- Image column -->
+        <div class="col-md-5">
+          <img [src]="hero.image" class="img-fluid rounded-start" [alt]="hero.name">
+        </div>
+        
+        <!-- Details column -->
+        <div class="col-md-7">
+          <div class="card-body">
+            <h4 class="card-title">{{ hero.name }}</h4>
+            <p class="card-text">{{ hero.description }}</p>
+            
+            <ul class="list-group mt-3">
+              <li class="list-group-item">
+                <strong>First Appearance:</strong> {{ hero.dateOfAppearance }}
+              </li>
+              <li class="list-group-item">
+                <strong>Publisher:</strong> {{ hero.publisher }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Card footer -->
+      <div class="card-footer">
+        <button class="btn btn-primary" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i> Back to Heroes
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Error message -->
+  <div class="alert alert-danger hero-details-container" *ngIf="!hero">
+    Hero not found!
+    <button class="btn btn-link" (click)="goBack()">Return to Heroes List</button>
+  </div>
+</div>
