@@ -38,7 +38,6 @@
             </div>
           </div>
 
-
           <!-- NgStyle  -->
           <div class="col-md-6 mb-3">
             <div class="card">
@@ -82,7 +81,48 @@
               </div>
             </div>
           </div>
-
+          
+          <!-- Ng-Switch -->
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header text-center">
+                Directivas - Ng Switch
+              </div>
+              
+              <div class="card-body text-center">
+                <p>Seleccione un héroe:</p>
+                
+                <select class="form-control mb-2" [(ngModel)]="selectedHero">
+                  <option value="">Seleccione</option>
+                  <option value="superman">Superman</option>
+                  <option value="batman">Batman</option>
+                  <option value="wonderwoman">Wonder Woman</option>
+                  <option value="flash">Flash</option>
+                </select>
+                
+                <div [ngSwitch]="selectedHero" class="mt-2">
+                  <p *ngSwitchCase="'superman'" class="text-primary">
+                    Has seleccionado a Superman!
+                  </p>
+                  <p *ngSwitchCase="'batman'" class="text-dark">
+                    Has seleccionado a Batman!
+                  </p>
+                  <p *ngSwitchCase="'wonderwoman'" class="text-danger">
+                    Has seleccionado a Wonder Woman!
+                  </p>
+                  <p *ngSwitchCase="'flash'" class="text-warning">
+                    Has seleccionado a Flash!
+                  </p>
+                  <p *ngSwitchDefault>
+                    Por favor seleccione una opción
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div> 
+      </div>
       
       <!-- Modal Footer -->
       <div class="modal-footer">

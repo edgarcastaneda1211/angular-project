@@ -10,3 +10,12 @@
 .modal-theme-danger { background-color: #f8d7da; }
 .modal-theme-warning { background-color: #fff3cd; }
 .modal-theme-info { background-color: #cff4fc; }
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
