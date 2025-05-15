@@ -1,0 +1,12 @@
+/* Base modal styling with transition */
+.modal-content {
+  transition: background-color 0.3s ease;
+}
+
+/* Simple theme colors */
+.modal-theme-default { background-color: #ffffff; }
+.modal-theme-primary { background-color: #cfe2ff; }
+.modal-theme-success { background-color: #d1e7dd; }
+.modal-theme-danger { background-color: #f8d7da; }
+.modal-theme-warning { background-color: #fff3cd; }
+.modal-theme-info { background-color: #cff4fc; }

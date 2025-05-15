@@ -2,7 +2,7 @@
 <div class="modal-container">
   <!-- Modal Dialog -->
   <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-content" [ngClass]="modalTheme">
     
       <!-- Form Header -->
       <div class="modal-header">
@@ -61,7 +61,29 @@
               </div>
             </div>
           </div>
+          
+          <!-- NgClass Example -->
+           <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header text-center">
+                Directivas - Ng Class
+              </div>
+              
+              <div class="card-body text-center">
+                <p>Presione el botón para cambiar el color del contenedor</p>
+                
+                <!-- Btn... base color class. Then Button to change the entire modal color -->
+                <button 
+                  class="btn" 
+                  [ngClass]="buttonClass"
+                  (click)="changeModalTheme()">
+                  Cambiar
+                </button>
+              </div>
+            </div>
+          </div>
 
+      
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button 
