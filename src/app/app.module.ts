@@ -15,7 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
 import { EjemploComponent } from './components/body/ejemplo/ejemplo.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormularioComponent } from './components/formulario/formulario.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     HeroDetailsComponent,
     ContactsComponent,
     EjemploComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +43,13 @@ import { FormsModule } from '@angular/forms';
     MatSliderModule,
     MatCardModule,
     MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
     FormsModule,
-    
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     
   ],
   providers: [],

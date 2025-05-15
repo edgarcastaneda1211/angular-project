@@ -5,6 +5,9 @@ import { BodyComponent } from './components/body/body.component';
 import { ContactsComponent } from './components/body/contacts/contacts.component';
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
 import { EjemploComponent } from './components/body/ejemplo/ejemplo.component';
+import { FormularioComponent } from './components/formulario/formulario.component';
+
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +15,7 @@ const routes: Routes = [
   { path: 'heroe/:id', component: HeroDetailsComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'ejemplo', component: EjemploComponent },
+  { path: 'formulario', component: FormularioComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }
 ];
