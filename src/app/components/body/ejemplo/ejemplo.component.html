@@ -1,0 +1,55 @@
+<!-- Main Form Container -->
+<div class="modal-container">
+  <!-- Modal Dialog -->
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <!-- Form Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Uso de directivas</h4>
+      </div>
+      
+      <!-- Form Body -->
+      <div class="modal-body">
+        <div class="row">
+        
+          <!-- NgModel Example -->
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <!-- Card Header -->
+              <div class="card-header text-center">
+                Directivas - Ng Model
+              </div>
+              
+              <!-- Card Body -->
+              <div class="card-body text-center">
+                <p>Ingrese texto y se reflejara abajo</p>
+                
+                <!-- NgModel binds this input to the inputText variable, then displays it w {{inputText}} -->
+                <input 
+                  type="text" 
+                  class="form-control mb-2" 
+                  [(ngModel)]="inputText"
+                  placeholder="Escriba aquí...">
+                
+                <!-- Display the entered text -->
+                <p><strong>Ingresaste:</strong> {{ inputText }}</p>
+              </div>
+            </div>
+          </div>
+          
+          
+      
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button 
+          type="button" 
+          class="btn btn-secondary" 
+          routerLink="/home">
+          Cerrar Modal
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>

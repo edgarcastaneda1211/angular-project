@@ -11,3 +11,5 @@ body, html {
     background-repeat: no-repeat;
     background-attachment: fixed; /* This keeps the background fixed when scrolling */
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
