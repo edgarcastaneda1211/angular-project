@@ -13,7 +13,7 @@
       <div class="modal-body">
         <div class="row">
         
-          <!-- NgModel Example -->
+          <!-- NgModel  -->
           <div class="col-md-6 mb-3">
             <div class="card">
               <!-- Card Header -->
@@ -37,9 +37,31 @@
               </div>
             </div>
           </div>
-          
-          
-      
+
+
+          <!-- NgStyle  -->
+          <div class="col-md-6 mb-3">
+            <div class="card">
+              <div class="card-header text-center">
+                Directivas - Ng Style
+              </div>
+              
+              <!--  ngStyle binds the cardStyle object which has a background color,
+              and a transition time so that we can change the color on the card object 
+              dymanically with a press of the button-->
+              <div class="card-body text-center" [ngStyle]="cardStyle">
+                <p>Presione el boton para cambiar el fondo de la card</p>
+                
+                <!-- Button to change background color -->
+                <button 
+                  class="btn btn-primary" 
+                  (click)="changeCardBackground()">
+                  Cambiar
+                </button>
+              </div>
+            </div>
+          </div>
+
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button 

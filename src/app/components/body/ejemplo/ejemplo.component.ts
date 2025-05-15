@@ -28,15 +28,19 @@ export class EjemploComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  changeCardBackground() {
-    // Generate random background color
-    const colors = ['#f8f9fa', '#e9ecef', '#dee2e6', '#ced4da', '#adb5bd', '#d1ecf1', '#d4edda', '#f8d7da'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    this.cardStyle = {
-      'background-color': randomColor,
-      'transition': 'background-color 0.3s'
-    };
-  }
+ changeCardBackground() {
+  // Simple array of color options
+  const colors = ['lightblue', 'lightgreen', 'lightpink', 'lightyellow', 'lavender'];
+  
+  // Get a random color from the array
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  
+  // Update the cardStyle object
+  this.cardStyle = {
+    'background-color': randomColor,
+    'transition': 'background-color 0.3s'
+  };
+}
   
   changeButtonClass() {
     this.currentClassIndex = (this.currentClassIndex + 1) % this.buttonClasses.length;
