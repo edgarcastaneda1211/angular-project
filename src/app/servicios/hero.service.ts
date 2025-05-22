@@ -10,7 +10,8 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class HeroService { // handles data operations of http calls and API
   // Try with an absolute URL
-private apiUrl = '/api/heroes';
+private getAllHeroesURL = '/api/heroes'; // get all heroes http
+private createAHeroURL =  `/api/heroes`
   
   // Fallback if API doesnt work! 
   private fallbackHeroes: Heroe[] = [
@@ -22,9 +23,9 @@ private apiUrl = '/api/heroes';
 
   // Get all heroes with better debugging
   getAllHeroes(): Observable<Heroe[]> { // getAllHeroes, expect that it will return an Observable of type Heroe array
-    console.log('Fetching heroes from:', this.apiUrl); 
+    console.log('Fetching heroes from:', this.getAllHeroesURL); 
   
-  return this.http.get<Heroe[]>(this.apiUrl) // Make HTTP GET request to fetch heroes
+  return this.http.get<Heroe[]>(this.getAllHeroesURL) // Make HTTP GET request to fetch heroes
     .pipe( // needed, handles errors!!! Runs IFF Subscribed!! All the below. 
       tap(heroes => {
         console.log('Heroes fetched successfully:', heroes);
@@ -44,7 +45,19 @@ private apiUrl = '/api/heroes';
     );
 }
 
-// Register a hero? 
-
+// Save a hero
+saveHero(hero: Heroe): Observable<Heroe> { // hero is data being saved, Heroe is type .... Also, in observable, only saving one hero not an array of heroes 
+  console.log('Saving hero:', hero);
+  
+  return this.http.post<Heroe>(this.createAHeroURL, hero).pipe( //Makes HTTP POST to save hero data to database via API
+    tap(savedHero => {
+      console.log(' Hero saved successfully:', savedHero);
+    }),
+    catchError(error => {
+      console.error('Error saving hero:', error);
+      return throwError(error);  // Let component handle the error
+    })
+  );
+}
 
 }

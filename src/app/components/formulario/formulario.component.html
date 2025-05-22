@@ -1,52 +1,53 @@
 <div class="hero-form-container">
   <h2>Add New Hero</h2>
-  
+   
   <form [formGroup]="formulario">
     <!-- Name -->
     <mat-form-field>
-      <input matInput formControlName="nombre" placeholder="Enter name of hero">
-      <mat-error *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched">
+      <input matInput formControlName="name" placeholder="Enter name of hero">
+      <mat-error *ngIf="formulario.get('name').hasError('required') && formulario.get('name').touched">
         Name is required
       </mat-error>
     </mat-form-field>
-    
+     
     <!-- Description -->
     <mat-form-field>
-      <textarea matInput formControlName="descripcion" placeholder="Enter description of hero"></textarea>
-      <mat-error *ngIf="formulario.get('descripcion').hasError('required') && formulario.get('descripcion').touched">
+      <textarea matInput formControlName="description" placeholder="Enter description of hero">
+      </textarea>
+      <mat-error *ngIf="formulario.get('description').hasError('required') && formulario.get('description').touched">
         Description is required
       </mat-error>
     </mat-form-field>
-    
+     
     <!-- Image URL -->
     <mat-form-field>
-      <input matInput formControlName="imagen" placeholder="Enter image of hero">
-      <mat-error *ngIf="formulario.get('imagen').hasError('required') && formulario.get('imagen').touched">
+      <input matInput formControlName="image" placeholder="Enter image of hero">
+      <mat-error *ngIf="formulario.get('image').hasError('required') && formulario.get('image').touched">
         Image URL is required
       </mat-error>
     </mat-form-field>
-    
+     
     <!-- Date with calendar picker -->
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" formControlName="fechaAparicion" placeholder="Enter date">
+      <input matInput [matDatepicker]="picker" formControlName="debutDate" placeholder="Enter date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="formulario.get('fechaAparicion').hasError('required') && formulario.get('fechaAparicion').touched">
+      <mat-error *ngIf="formulario.get('debutDate').hasError('required') && formulario.get('debutDate').touched">
         Date is required
       </mat-error>
     </mat-form-field>
-    
+     
     <!-- House/Publisher -->
     <mat-form-field>
-      <mat-select formControlName="casa" placeholder="Enter the house of the hero">
+      <mat-select formControlName="house" placeholder="Enter the house of the hero">
         <mat-option value="Marvel">Marvel</mat-option>
         <mat-option value="DC">DC</mat-option>
       </mat-select>
-      <mat-error *ngIf="formulario.get('casa').hasError('required') && formulario.get('casa').touched">
+      <mat-error *ngIf="formulario.get('house').hasError('required') && formulario.get('house').touched">
         House is required
       </mat-error>
     </mat-form-field>
-    
+     
     <!-- Save Button -->
     <button [disabled]="!formulario.valid" mat-raised-button color="primary" (click)="guardar()">
       Save
