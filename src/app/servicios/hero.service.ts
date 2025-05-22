@@ -10,8 +10,9 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class HeroService { // handles data operations of http calls and API
   // Try with an absolute URL
-private getAllHeroesURL = '/api/heroes'; // get all heroes http
-private createAHeroURL =  `/api/heroes`
+
+private deleteAHeroURL = `/api/heroes/{id}`;
+private baseURL = '/api/heroes';
   
   // Fallback if API doesnt work! 
   private fallbackHeroes: Heroe[] = [
@@ -23,9 +24,9 @@ private createAHeroURL =  `/api/heroes`
 
   // Get all heroes with better debugging
   getAllHeroes(): Observable<Heroe[]> { // getAllHeroes, expect that it will return an Observable of type Heroe array
-    console.log('Fetching heroes from:', this.getAllHeroesURL); 
+    console.log('Fetching heroes from:', this.baseURL); 
   
-  return this.http.get<Heroe[]>(this.getAllHeroesURL) // Make HTTP GET request to fetch heroes
+  return this.http.get<Heroe[]>(this.baseURL) // Make HTTP GET request to fetch heroes
     .pipe( // needed, handles errors!!! Runs IFF Subscribed!! All the below. 
       tap(heroes => {
         console.log('Heroes fetched successfully:', heroes);
@@ -46,16 +47,32 @@ private createAHeroURL =  `/api/heroes`
 }
 
 // Save a hero
-saveHero(hero: Heroe): Observable<Heroe> { // hero is data being saved, Heroe is type .... Also, in observable, only saving one hero not an array of heroes 
+saveHeroAPI(hero: Heroe): Observable<Heroe> { // hero is data being saved, Heroe is type .... Also, in observable, only saving one hero not an array of heroes 
   console.log('Saving hero:', hero);
   
-  return this.http.post<Heroe>(this.createAHeroURL, hero).pipe( //Makes HTTP POST to save hero data to database via API
+  return this.http.post<Heroe>(this.baseURL, hero).pipe( //Makes HTTP POST to save hero data to database via API
     tap(savedHero => {
       console.log(' Hero saved successfully:', savedHero);
     }),
     catchError(error => {
       console.error('Error saving hero:', error);
       return throwError(error);  // Let component handle the error
+    })
+  );
+}
+
+
+// Delete a hero by ID ... communicates w backend / db
+deleteHero(id: number): Observable<any> {
+  console.log('Deleting hero with ID:', id);
+  
+  return this.http.delete(`${this.baseURL}/${id}`).pipe(
+    tap(() => {
+      console.log(' Hero deleted successfully');
+    }),
+    catchError(error => {
+      console.error('Error deleting hero:', error);
+      return throwError(error);
     })
   );
 }

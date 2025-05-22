@@ -18,14 +18,15 @@
           
           <ul class="list-group list-group-flush">
             <!-- Hero properties as list items -->
-            <li class="list-group-item">Debut Date: {{ hero.debut_Date  }}</li>
+            <li class="list-group-item">Debut Date: {{ hero.debutDate  }}</li>
             <li class="list-group-item">House: {{ hero.house }}</li>
           </ul>
           
           <div class="card-body">
-            <!-- Links for additional actions -->
-            <a [routerLink]="['/heroe', i]" class="card-link">View Details</a>
-            <a href="#" class="card-link">Hero Wiki</a>
+          <a [routerLink]="['/heroe', hero.id]" class="card-link">View Details</a>
+          <button (click)="onDeleteHero(hero.id)" class="btn btn-link card-link text-danger">
+            Delete hero
+          </button>
           </div>
         </div>
       </div>

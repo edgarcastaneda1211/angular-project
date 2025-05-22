@@ -51,4 +51,15 @@ private handleError(err: any): void {
     console.error('Error in component:', err);
   }
 
+    // COMPONENT - Updates the UI
+onDeleteHero(heroId: number) {
+  this.heroService.deleteHero(heroId).subscribe({
+    next: () => {
+      // Success updated UI
+      this.heroes = this.heroes.filter(hero => hero.id !== heroId); 
+      console.log('Hero removed from screen');
+    }
+  });
+}
+
 }

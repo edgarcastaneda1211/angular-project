@@ -49,7 +49,7 @@ export class FormularioComponent implements OnInit {
     const heroData = this.formulario.value;
     
     // Call service and subscribe
-    this.heroService.saveHero(heroData).subscribe({
+    this.heroService.saveHeroAPI(heroData).subscribe({
       next: (savedHero) => {
         console.log('Success!');
         this.formulario.reset(); // Clear form
@@ -61,4 +61,5 @@ export class FormularioComponent implements OnInit {
       }
     });
   }
+
 }
