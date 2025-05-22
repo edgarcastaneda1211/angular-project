@@ -41,7 +41,7 @@
   </div>
   
   <!-- Error message -->
-  <div class="alert alert-danger hero-details-container" *ngIf="!hero">
+  <div class="alert alert-danger hero-details-container" *ngIf="!hero && !loading">
     Hero not found!
     <button class="btn btn-link" (click)="goBack()">Return to Heroes List</button>
   </div>

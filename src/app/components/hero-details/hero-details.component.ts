@@ -30,8 +30,7 @@ export class HeroDetailsComponent implements OnInit {
       this.heroService.getAllHeroes().subscribe(
         (heroes) => {
           // Find the hero with the matching index or ID
-          this.hero = heroes[id]; // If using index
-          // OR this.hero = heroes.find(h => h.id === id); // If using ID
+          this.hero = heroes.find(h => h.id === id);
           
           this.loading = false;
           
