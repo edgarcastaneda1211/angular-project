@@ -1,0 +1,46 @@
+<!-- TEMPLATE: User interface for editing hero data -->
+<div class="hero-form-container">
+  <h2>Edit Hero</h2>
+  
+  <!-- Form bound to TypeScript FormGroup -->
+  <form [formGroup]="formulario">
+    
+    <!-- Description field: User can edit hero description -->
+    <mat-form-field>
+      <textarea matInput 
+                formControlName="description" 
+                placeholder="Description">
+      </textarea>
+    </mat-form-field>
+    
+    <!-- House field: User selects from dropdown -->
+    <mat-form-field>
+      <mat-select formControlName="house" placeholder="House">
+        <mat-option value="Marvel">Marvel</mat-option>
+        <mat-option value="DC">DC</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <!-- Date field: User picks debut date -->
+    <mat-form-field>
+      <input matInput 
+             [matDatepicker]="picker" 
+             formControlName="debutDate" 
+             placeholder="Debut Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <!-- Save button: Triggers saveEdit() method in TypeScript -->
+    <button mat-raised-button 
+            color="primary" 
+            (click)="saveEdit()">
+      Update
+    </button>
+    
+    <!-- Cancel button: Goes back without saving -->
+    <button mat-button (click)="goBack()">
+      Cancel
+    </button>
+  </form>
+</div>

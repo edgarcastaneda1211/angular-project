@@ -29,9 +29,9 @@
               View Details
             </a>
             
-            <button (click)="onUpdateHero(hero.id)" class="btn btn-warning btn-sm">
+            <a [routerLink]="['/edit-hero', hero.id]" class="btn btn-warning btn-sm">
               Edit Info
-            </button>
+            </a>
             
             <button (click)="onDeleteHero(hero.id)" class="btn btn-danger btn-sm">
               Delete Hero

@@ -45,13 +45,14 @@ private loadHeroes(): void {
   });
 }
 
+// Handles any errors 
 private handleError(err: any): void {
     this.error = 'Failed to load heroes';
     this.loading = false;
     console.error('Error in component:', err);
   }
 
-    // COMPONENT - Updates the UI
+// COMPONENT - Updates the UI
 onDeleteHero(heroId: number) {
   this.heroService.deleteHero(heroId).subscribe({
     next: () => {
@@ -61,5 +62,7 @@ onDeleteHero(heroId: number) {
     }
   });
 }
+
+// 
 
 }

@@ -22,6 +22,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { EditHeroComponent } from './components/body/edit-hero/edit-hero.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeroDetailsComponent,
     ContactsComponent,
     EjemploComponent,
-    FormularioComponent
+    FormularioComponent,
+    EditHeroComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
+    CommonModule,
+
     
   ],
   providers: [],

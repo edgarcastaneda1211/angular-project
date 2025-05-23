@@ -1,5 +1,10 @@
 <div class="hero-form-container">
   <h2>Add New Hero</h2>
+  
+  <!-- Success Message -->
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Hero created successfully! Redirecting...
+  </div>
    
   <form [formGroup]="formulario">
     <!-- Name -->

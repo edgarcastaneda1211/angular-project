@@ -11,8 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class HeroService { // handles data operations of http calls and API
   // Try with an absolute URL
 
-private deleteAHeroURL = `/api/heroes/{id}`;
-private baseURL = '/api/heroes';
+  private baseURL = '/api/heroes';
   
   // Fallback if API doesnt work! 
   private fallbackHeroes: Heroe[] = [
@@ -26,7 +25,7 @@ private baseURL = '/api/heroes';
   getAllHeroes(): Observable<Heroe[]> { // getAllHeroes, expect that it will return an Observable of type Heroe array
     console.log('Fetching heroes from:', this.baseURL); 
   
-  return this.http.get<Heroe[]>(this.baseURL) // Make HTTP GET request to fetch heroes
+    return this.http.get<Heroe[]>(this.baseURL) // Make HTTP GET request to fetch heroes
     .pipe( // needed, handles errors!!! Runs IFF Subscribed!! All the below. 
       tap(heroes => {
         console.log('Heroes fetched successfully:', heroes);
@@ -44,37 +43,51 @@ private baseURL = '/api/heroes';
         return of(this.fallbackHeroes);
       })
     );
-}
+  }
 
-// Save a hero
-saveHeroAPI(hero: Heroe): Observable<Heroe> { // hero is data being saved, Heroe is type .... Also, in observable, only saving one hero not an array of heroes 
-  console.log('Saving hero:', hero);
-  
-  return this.http.post<Heroe>(this.baseURL, hero).pipe( //Makes HTTP POST to save hero data to database via API
-    tap(savedHero => {
-      console.log(' Hero saved successfully:', savedHero);
-    }),
-    catchError(error => {
-      console.error('Error saving hero:', error);
-      return throwError(error);  // Let component handle the error
-    })
-  );
-}
+  // Save a hero
+  saveHeroAPI(hero: Heroe): Observable<Heroe> { // hero is data being saved, Heroe is type .... Also, in observable, only saving one hero not an array of heroes 
+    console.log('Saving hero:', hero);
+    
+    return this.http.post<Heroe>(this.baseURL, hero).pipe( //Makes HTTP POST to save hero data to database via API
+      tap(savedHero => {
+        console.log(' Hero saved successfully:', savedHero);
+      }),
+      catchError(error => {
+        console.error('Error saving hero:', error);
+        return throwError(error);  // Let component handle the error
+      })
+    );
+  }
 
+  // Update an existing hero
+  updateHero(id: number, heroData: any): Observable<Heroe> {
+    console.log('Updating hero with ID:', id, heroData);
 
-// Delete a hero by ID ... communicates w backend / db
-deleteHero(id: number): Observable<any> {
-  console.log('Deleting hero with ID:', id);
-  
-  return this.http.delete(`${this.baseURL}/${id}`).pipe(
-    tap(() => {
-      console.log(' Hero deleted successfully');
-    }),
-    catchError(error => {
-      console.error('Error deleting hero:', error);
-      return throwError(error);
-    })
-  );
-}
+    // PUT request that sends updated data to /api/heroes/{id}
+    return this.http.put<Heroe>(`${this.baseURL}/${id}`, heroData).pipe(
+      tap(updatedHero => {
+        console.log('Hero updated successfully:', updatedHero);
+      }),
+      catchError(error => {
+        console.error('Error updating hero:', error);
+        return throwError(error);
+      })
+    );
+  }
 
+  // Delete a hero by ID ... communicates w backend / db
+  deleteHero(id: number): Observable<any> {
+    console.log('Deleting hero with ID:', id);
+    
+    return this.http.delete(`${this.baseURL}/${id}`).pipe(
+      tap(() => {
+        console.log(' Hero deleted successfully');
+      }),
+      catchError(error => {
+        console.error('Error deleting hero:', error);
+        return throwError(error);
+      })
+    );
+  }
 }

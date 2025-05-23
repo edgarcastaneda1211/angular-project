@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HeroService } from '../../servicios/hero.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',            
@@ -9,8 +10,9 @@ import { HeroService } from '../../servicios/hero.service';
 })
 export class FormularioComponent implements OnInit {
   formulario: FormGroup; // Declares a container variable that holds form data and rules
+  showSuccessMessage = false; // Controls success message visibility
 
-  constructor(private heroService: HeroService) { // form data in construc... blueprint of data we expect before we get any data
+  constructor(private heroService: HeroService,  private router: Router ) { // form data in construc... blueprint of data we expect before we get any data
     // Initialize the form structure with validation rules
     this.formulario = new FormGroup({
       // Field for hero's name - required 
@@ -43,7 +45,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   // Function that runs when Save button is clicked
-  // Logs the complete form data object to the console
+  // Sends form data to API and navigates to heroes list on success
   guardar() {
     // Get form data
     const heroData = this.formulario.value;
@@ -52,14 +54,20 @@ export class FormularioComponent implements OnInit {
     this.heroService.saveHeroAPI(heroData).subscribe({
       next: (savedHero) => {
         console.log('Success!');
+        this.showSuccessMessage = true; // Show success message
         this.formulario.reset(); // Clear form
         this.formulario.markAsUntouched(); // Clear "touched" state
-      this.formulario.markAsPristine();  // Clear "dirty" state
+        this.formulario.markAsPristine();  // Clear "dirty" state
+        
+        // Wait 2 seconds, then navigate
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigate(['/heroes']);
+        }, 2000);
       },
       error: (error) => {
         console.log('Error saving hero');
       }
     });
   }
-
 }
