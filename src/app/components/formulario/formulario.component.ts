@@ -1,63 +1,45 @@
+// formulario.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HeroService } from '../../servicios/hero.service';
 import { Router } from '@angular/router';
+import { ComponentTrackerService } from '../../servicios/component-tracker.service';
 
 @Component({
-  selector: 'app-formulario',            
+  selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']   
+  styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-  formulario: FormGroup; // Declares a container variable that holds form data and rules
-  showSuccessMessage = false; // Controls success message visibility
+  formulario: FormGroup; // Form container with validation rules
+  showSuccessMessage = false;
 
-  constructor(private heroService: HeroService,  private router: Router ) { // form data in construc... blueprint of data we expect before we get any data
-    // Initialize the form structure with validation rules
+  constructor(private heroService: HeroService, private router: Router, private tracker: ComponentTrackerService) {
+    // Initialize form structure
     this.formulario = new FormGroup({
-      // Field for hero's name - required 
-      name: new FormControl('', [
-        Validators.required
-      ]),
-      
-      // Field for hero's description - required
-      description: new FormControl('', [
-        Validators.required
-      ]),
-      
-      // Field for hero's image URL - required
-      image: new FormControl('', [
-        Validators.required,
-      ]),
-      
-      // Field for hero's first appearance date - required
-      debutDate: new FormControl('', [ // ← Fixed typo: was "debuteDate"
-        Validators.required
-      ]),
-      
-      // Field for hero's publisher/house - required
-      house: new FormControl('', [
-        Validators.required
-      ])
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
+      debutDate: new FormControl('', [Validators.required]),
+      house: new FormControl('', [Validators.required])
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tracker.announceComponent('Formulario');
+  }
 
-  // Function that runs when Save button is clicked
-  // Sends form data to API and navigates to heroes list on success
+  // Save form data and navigate on success
   guardar() {
-    // Get form data
     const heroData = this.formulario.value;
     
-    // Call service and subscribe
     this.heroService.saveHeroAPI(heroData).subscribe({
       next: (savedHero) => {
         console.log('Success!');
-        this.showSuccessMessage = true; // Show success message
-        this.formulario.reset(); // Clear form
-        this.formulario.markAsUntouched(); // Clear "touched" state
-        this.formulario.markAsPristine();  // Clear "dirty" state
+        this.showSuccessMessage = true;
+        this.formulario.reset();
+        this.formulario.markAsUntouched();
+        this.formulario.markAsPristine();
         
         // Wait 2 seconds, then navigate
         setTimeout(() => {

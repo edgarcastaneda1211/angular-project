@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComponentTrackerService } from '../../../servicios/component-tracker.service'; // ← Add this line
+
 
 @Component({
   selector: 'app-ejemplo',
@@ -24,9 +26,10 @@ export class EjemploComponent implements OnInit {
   // ngSwitch example
   selectedHero: string = '';
   
-  constructor() { }
+  constructor(private tracker: ComponentTrackerService) { }
 
   ngOnInit(): void {
+     this.tracker.announceComponent('Ejemplo'); // 
   }
   
   changeCardBackground() {

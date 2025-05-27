@@ -5,9 +5,9 @@
          sets the hero variable to current array item like batman or superman, then sets the i
          variable to the current index, 0, 1, 2 etc. and renders this copy w appropriate data! -->
     <div class="col-md-4 mb-4" *ngFor="let hero of heroes; let i = index">
-      <div class="card" style="width: 16rem;">
+      <div class="card h-100" style="width: 16rem;">
         <!-- Hero image - to get it is done as hero.image in src... instead of placeholder -->
-        <img class="card-img-top" [src]="hero.image" alt="{{ hero.name }}">
+         <img class="card-img-top" [src]="'assets/img/' + hero.image" alt="{{ hero.name }}">
         
         <div class="card-body">
           <!-- Hero name as card title -->
