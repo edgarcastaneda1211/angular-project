@@ -24,6 +24,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EditHeroComponent } from './components/body/edit-hero/edit-hero.component';
+import { PadreComponent } from './padre/padre.component';
+import { HijoComponent } from './hijo/hijo.component';
+import { CommunicacionComponent } from './components/body/communicacion/communicacion.component';
 
 
 @NgModule({
@@ -38,7 +41,10 @@ import { EditHeroComponent } from './components/body/edit-hero/edit-hero.compone
     ContactsComponent,
     EjemploComponent,
     FormularioComponent,
-    EditHeroComponent
+    EditHeroComponent,
+    PadreComponent,
+    HijoComponent,
+    CommunicacionComponent,
   ],
   imports: [
     BrowserModule,

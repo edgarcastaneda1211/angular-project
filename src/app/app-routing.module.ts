@@ -7,7 +7,7 @@ import { HeroDetailsComponent } from './components/hero-details/hero-details.com
 import { EjemploComponent } from './components/body/ejemplo/ejemplo.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { EditHeroComponent } from './components/body/edit-hero/edit-hero.component';
-
+import { CommunicacionComponent } from './components/body/communicacion/communicacion.component';
 
 
 const routes: Routes = [
@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'ejemplo', component: EjemploComponent },
   { path: 'formulario', component: FormularioComponent },
   { path: 'edit-hero/:id', component: EditHeroComponent},
+  { path: 'communicacion', component: CommunicacionComponent },
+
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' }

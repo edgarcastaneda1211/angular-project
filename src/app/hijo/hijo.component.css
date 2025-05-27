@@ -1,0 +1,15 @@
+/* hijo.component.css */
+.child-container {
+  padding: 15px;
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  margin: 10px 0;
+  background-color: #fff;
+}
+
+.parent-message {
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: #e2e6ea;
+  border-radius: 4px;
+}

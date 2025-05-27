@@ -1,0 +1,18 @@
+<!-- hijo.component.html -->
+<div class="child-container">
+  <h3>Hijo Communicacion</h3>
+  
+  <!-- what parent sent down -->
+  <div class="parent-message">
+    <label><strong>Valor del Padre:</strong> {{ messageFromParent }}</label>
+  </div>
+  
+  <!-- kid input box to send to Padre -->
+  <div>
+    <input 
+      type="text" 
+      [value]="childMessage"
+      (input)="onInputChange($any($event.target).value)"
+      placeholder="Escribe aquí - hijo">
+  </div>
+</div>

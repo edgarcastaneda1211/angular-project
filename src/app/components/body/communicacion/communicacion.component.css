@@ -1,0 +1,40 @@
+
+/* communicacion.component.css */
+.center-everything {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* padre.component.css */
+.parent-container {
+  padding: 15px;
+  border: 2px solid blue;
+  border-radius: 8px;
+  background: white;
+  margin: 10px;
+}
+
+.received-message {
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: lightgreen;
+  border-radius: 4px;
+}
+
+/* hijo.component.css */
+.child-container {
+  padding: 15px;
+  border: 2px solid green;
+  border-radius: 8px;
+  margin: 10px 0;
+  background-color: white;
+}
+
+.parent-message {
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: lightgray;
+  border-radius: 4px;
+}

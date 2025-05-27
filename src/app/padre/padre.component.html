@@ -1,0 +1,25 @@
+<!-- padre.component.html -->
+<div class="parent-container">
+  <h2>Padre Communicacion</h2>
+  
+  <!-- what kid sends back -->
+  <div class="received-message">
+    <label><strong>Valor del Hijo:</strong> {{ receivedFromChild }}</label>
+  </div>
+  
+  <!-- parent input box -->
+  <div>
+    <input 
+      type="text" 
+      [(ngModel)]="parentMessage"
+      placeholder="Escribe aqui - Padre">
+  </div>
+  
+  <!-- hijo component -->
+  <!-- [messageFromParent] sends data down -->
+  <!-- (messageEvent) gets data back up -->
+  <app-hijo 
+    [messageFromParent]="parentMessage"
+    (messageEvent)="onChildMessage($event)">
+  </app-hijo>
+</div>
